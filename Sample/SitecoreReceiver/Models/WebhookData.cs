@@ -198,6 +198,6 @@ namespace SitecoreReceiver.WebHooks
         public string WebhookItemId { get; set; }
         public string OldName { get; set; }
         public string WebhookItemName { get; set; }
-        public string CompleteJson { get; set; }
+        public string CompleteData { get; set; }
     }
 }

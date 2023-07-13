@@ -29,7 +29,7 @@ namespace SitecoreReceiver.WebHooks
                     // Get JSON from WebHook
                     JObject jObject = context.GetDataOrDefault<JObject>();
                     data = context.GetDataOrDefault<SitecoreWebhookRoot>();
-                    data.CompleteJson = jObject.ToString();
+                    data.CompleteData = jObject.ToString();
 
                     if (SessionData.SitecoreList == null) { SessionData.SitecoreList = new List<SitecoreWebhookRoot>(); }
                     SessionData.SitecoreList.Add(data);
@@ -37,6 +37,10 @@ namespace SitecoreReceiver.WebHooks
                     break;
                 case "application/xml":
                     //to implement for xml
+                    data.CompleteData = context.Request.Content.ToString();
+
+                    if (SessionData.SitecoreList == null) { SessionData.SitecoreList = new List<SitecoreWebhookRoot>(); }
+                    SessionData.SitecoreList.Add(data);
 
                     break;
                 default:
