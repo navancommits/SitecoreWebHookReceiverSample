@@ -4,6 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.WebHooks;
 using Newtonsoft.Json.Linq;
+using System.Web.UI.WebControls;
+using System.IO;
+using System.Text;
+using System.Xml.Serialization;
+using System.Web.Services.Description;
 
 namespace SitecoreReceiver.WebHooks
 {
@@ -11,14 +16,28 @@ namespace SitecoreReceiver.WebHooks
     {
         public SitecoreJsonWebHookHandler()
         {
-          this.Receiver = SitecoreJsonWebHookReceiver.ReceiverName;
+          this.Receiver = SitecoreJsonWebHookReceiver.ReceiverName;            
         }
 
         public override Task ExecuteAsync(string receiver, WebHookHandlerContext context)
         {
-            // Get JSON from WebHook
-            JObject jObject = context.GetDataOrDefault<JObject>();
-            SitecoreWebhookRoot data = context.GetDataOrDefault<SitecoreWebhookRoot>();
+            SitecoreWebhookRoot data = null;
+
+            switch (SitecoreJsonWebHookReceiver.ContentType)
+            {
+                case "application/json":
+                    // Get JSON from WebHook
+                    JObject jObject = context.GetDataOrDefault<JObject>();
+                    data = context.GetDataOrDefault<SitecoreWebhookRoot>();
+
+                    break;
+                case "application/xml":
+                    //to implement for xml
+
+                    break;
+                default:
+                    break;
+            }               
 
             switch (data.EventName.ToLowerInvariant())
             {

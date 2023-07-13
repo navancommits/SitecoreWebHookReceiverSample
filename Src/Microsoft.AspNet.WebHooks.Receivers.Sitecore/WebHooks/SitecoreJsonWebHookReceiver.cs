@@ -6,6 +6,7 @@ using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http.Controllers;
+using System.Xml.Linq;
 using Newtonsoft.Json.Linq;
 
 namespace Microsoft.AspNet.WebHooks
@@ -26,6 +27,10 @@ namespace Microsoft.AspNet.WebHooks
         internal const string RecName = "sitecorejson";
         internal const string ActionQueryParameter = "action";
         internal const string DefaultAction = "change";
+        /// <summary>
+        /// Content type
+        /// </summary>
+        public static string ContentType;
 
         /// <summary>
         /// Gets the receiver name for this receiver.
@@ -41,9 +46,11 @@ namespace Microsoft.AspNet.WebHooks
             get { return RecName; }
         }
 
+       
         /// <inheritdoc />
         public override async Task<HttpResponseMessage> ReceiveAsync(string id, HttpRequestContext context, HttpRequestMessage request)
         {
+
             if (id == null)
             {
                 throw new ArgumentNullException(nameof(id));
@@ -62,11 +69,10 @@ namespace Microsoft.AspNet.WebHooks
                 return CreateBadMethodResponse(request);
             }
 
+            ContentType = request.Content.Headers.ContentType.MediaType.ToString();
+
             // Ensure that we use https and have a valid code parameter
             await EnsureValidCode(request, id);
-
-            // Read the request entity body
-            JToken data = await ReadAsJsonTokenAsync(request);
 
             // Get the action
             NameValueCollection queryParameters = request.RequestUri.ParseQueryString();
@@ -76,8 +82,25 @@ namespace Microsoft.AspNet.WebHooks
                 action = DefaultAction;
             }
 
-            // Call registered handlers
-            return await ExecuteWebHookAsync(id, context, request, new[] { action }, data);
+            JToken data=null;
+            XElement xmldata = null;
+
+            switch (ContentType)
+            {
+                case "application/json":
+                    // Read the request entity body
+                    data = await ReadAsJsonTokenAsync(request);
+                    // Call registered handlers
+                    return await ExecuteWebHookAsync(id, context, request, new[] { action }, data);
+                case "application/xml":
+                    // Read the request entity body
+                    xmldata = await ReadAsXmlAsync(request);
+                    // Call registered handlers
+                    return await ExecuteWebHookAsync(id, context, request, new[] { action }, xmldata);
+                default:
+                    return CreateBadMethodResponse(request);
+            }  
+            
         }
     }
 }
