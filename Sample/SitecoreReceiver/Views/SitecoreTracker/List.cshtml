@@ -1,0 +1,27 @@
+﻿<h1>Sitecore Webhook - Activity List </h1>
+@if (Model == null)
+{
+    <h4>No Data to display</h4>
+    return;
+}
+else
+{
+    <h6>Item Count: @Model.Count</h6> 
+}
+
+<table>
+    <tr>
+        <th>Event Name</th>
+        <th>Sitecore Data</th>
+    </tr>
+
+    @foreach (SitecoreReceiver.WebHooks.SitecoreWebhookRoot item in Model)
+    {
+        <tr>
+            <td>@item.EventName</td>
+            <td>
+                @item.CompleteJson
+            </td>
+        </tr>
+    }
+</table>
