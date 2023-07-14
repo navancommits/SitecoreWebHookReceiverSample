@@ -9,6 +9,8 @@ using System.IO;
 using System.Text;
 using System.Xml.Serialization;
 using System.Web.Services.Description;
+using System.Net.Http;
+using System.Security.Policy;
 
 namespace SitecoreReceiver.WebHooks
 {
@@ -16,10 +18,10 @@ namespace SitecoreReceiver.WebHooks
     {
         public SitecoreJsonWebHookHandler()
         {
-          this.Receiver = SitecoreJsonWebHookReceiver.ReceiverName;            
+            this.Receiver = SitecoreJsonWebHookReceiver.ReceiverName;
         }
 
-        public override Task ExecuteAsync(string receiver, WebHookHandlerContext context)
+        public override  Task ExecuteAsync(string receiver, WebHookHandlerContext context)
         {
             SitecoreWebhookRoot data = null;
 
@@ -50,6 +52,16 @@ namespace SitecoreReceiver.WebHooks
             switch (data.EventName.ToLowerInvariant())
             {
                 case "item:deleting":
+
+                    var webhookUrl = "https://hooks.slack.com/services/Tttttt/vvvvv/dfdfdsf4sWHa8E22";//this is bogus, ensure this is correct
+                    var client = new HttpClient();
+                    var messageString = "Item deleted by user from Sitecore; Item id: " + data.Item.Id + " Item Name: " + data.Item.Name;
+
+                    var jsonString = "{\"text\": \"" + messageString + "\"}";
+
+                    var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                    var result = client.PostAsync(webhookUrl, content).Result;
+
 
                     break;
                 case "item:deleted":
