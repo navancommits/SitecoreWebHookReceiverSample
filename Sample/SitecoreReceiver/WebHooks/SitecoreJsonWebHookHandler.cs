@@ -1,16 +1,10 @@
-﻿using System.Collections.Generic;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.WebHooks;
+﻿using Microsoft.AspNet.WebHooks;
 using Newtonsoft.Json.Linq;
-using System.Web.UI.WebControls;
-using System.IO;
-using System.Text;
-using System.Xml.Serialization;
-using System.Web.Services.Description;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
-using System.Security.Policy;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SitecoreReceiver.WebHooks
 {
