@@ -9,10 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{85D03B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{019640F1-1710-4726-BDDA-09E60C080D61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AspNet.WebHooks.Common", "Src\Microsoft.AspNet.WebHooks.Common\Microsoft.AspNet.WebHooks.Common.csproj", "{F7DD0935-6320-4EFC-9464-D5A2D2B8C2F7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AspNet.WebHooks.Receivers", "Src\Microsoft.AspNet.WebHooks.Receivers\Microsoft.AspNet.WebHooks.Receivers.csproj", "{8CED31FB-32F2-4FFB-9997-452FB9728577}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AspNet.WebHooks.Receivers.Sitecore", "Src\Microsoft.AspNet.WebHooks.Receivers.Sitecore\Microsoft.AspNet.WebHooks.Receivers.Sitecore.csproj", "{D11864BF-6013-473A-A063-C6F339DBAE20}"
 EndProject
 Global
@@ -28,18 +24,6 @@ Global
 		{D2646FD1-C536-44B5-B4DF-50344C51CFE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2646FD1-C536-44B5-B4DF-50344C51CFE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2646FD1-C536-44B5-B4DF-50344C51CFE8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F7DD0935-6320-4EFC-9464-D5A2D2B8C2F7}.CodeAnalysis|Any CPU.ActiveCfg = CodeAnalysis|Any CPU
-		{F7DD0935-6320-4EFC-9464-D5A2D2B8C2F7}.CodeAnalysis|Any CPU.Build.0 = CodeAnalysis|Any CPU
-		{F7DD0935-6320-4EFC-9464-D5A2D2B8C2F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F7DD0935-6320-4EFC-9464-D5A2D2B8C2F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F7DD0935-6320-4EFC-9464-D5A2D2B8C2F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F7DD0935-6320-4EFC-9464-D5A2D2B8C2F7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8CED31FB-32F2-4FFB-9997-452FB9728577}.CodeAnalysis|Any CPU.ActiveCfg = CodeAnalysis|Any CPU
-		{8CED31FB-32F2-4FFB-9997-452FB9728577}.CodeAnalysis|Any CPU.Build.0 = CodeAnalysis|Any CPU
-		{8CED31FB-32F2-4FFB-9997-452FB9728577}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8CED31FB-32F2-4FFB-9997-452FB9728577}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8CED31FB-32F2-4FFB-9997-452FB9728577}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8CED31FB-32F2-4FFB-9997-452FB9728577}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D11864BF-6013-473A-A063-C6F339DBAE20}.CodeAnalysis|Any CPU.ActiveCfg = CodeAnalysis|Any CPU
 		{D11864BF-6013-473A-A063-C6F339DBAE20}.CodeAnalysis|Any CPU.Build.0 = CodeAnalysis|Any CPU
 		{D11864BF-6013-473A-A063-C6F339DBAE20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -52,8 +36,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D2646FD1-C536-44B5-B4DF-50344C51CFE8} = {85D03BAF-C088-4BF1-AE8B-9A97CD22EC97}
-		{F7DD0935-6320-4EFC-9464-D5A2D2B8C2F7} = {019640F1-1710-4726-BDDA-09E60C080D61}
-		{8CED31FB-32F2-4FFB-9997-452FB9728577} = {019640F1-1710-4726-BDDA-09E60C080D61}
 		{D11864BF-6013-473A-A063-C6F339DBAE20} = {019640F1-1710-4726-BDDA-09E60C080D61}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
